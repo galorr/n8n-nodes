@@ -1,14 +1,15 @@
 {
   "name": "nb-email-verification",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "n8n node to provide NeverBounce email verification",
   "keywords": [
     "n8n-community-node-package",
     "n8n-node",
     "email",
     "verification",
-    "space",
-    "images"
+    "validation",
+    "neverbounce",
+    "email-verification"
   ],
   "license": "MIT",
   "homepage": "https://www.neverbounce.com/",
@@ -18,10 +19,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/author/email-verification-hints.git"
+    "url": "https://github.com/neverbounce/nb-email-verification.git"
   },
   "engines": {
-    "node": ">=20.15"
+    "node": ">=14.0.0"
   },
   "main": "index.js",
   "scripts": {

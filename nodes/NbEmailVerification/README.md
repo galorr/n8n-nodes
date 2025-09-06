@@ -15,6 +15,9 @@ The NeverBounce Email Verification node connects to the NeverBounce API to valid
 ### Operation
 - **Verify Email**: Validates an email address using the NeverBounce API.
 
+### API Endpoint
+- **API Endpoint**: The NeverBounce API endpoint to use. Default is `https://api.neverbounce.com'`.
+
 ### Email Field
 - **Email Field**: The name of the field in the input data that contains the email address to verify. Default is `email`.
 
@@ -67,10 +70,6 @@ This example shows how to verify multiple emails with a custom output field.
 3. **Filter node**: Filters out invalid emails.
    - Set condition to `{{$json.nb_verification.valid}} === true`
 4. **Spreadsheet node**: Saves valid emails to a new spreadsheet.
-
-## Known Issues
-
-There is a TODO in the code regarding the `sudo_id` parameter in the API request. Currently, this parameter is set to an empty string. This will be fixed in a future update to properly reference the user ID when making API requests.
 
 ## Additional Resources
 

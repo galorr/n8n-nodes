@@ -8,6 +8,12 @@ import {
 	IHttpRequestOptions,
 } from 'n8n-workflow';
 
+/**
+ * Email validation regex pattern
+ * This is a basic pattern that checks for the standard email format
+ */
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 export enum VerifyStatusCode {
 	VALID = 0,
 	INVALID = 1,
@@ -86,6 +92,20 @@ export class NbEmailVerification implements INodeType {
 				required: true,
 			},
 			{
+				displayName: 'API Endpoint',
+				name: 'apiEndpoint',
+				type: 'string',
+				default: 'https://api.neverbounce.com',
+				description: 'The NeverBounce API endpoint to use',
+				displayOptions: {
+					show: {
+						operation: [
+							'verifyEmail',
+						],
+					},
+				},
+			},
+			{
 				displayName: 'Additional Fields',
 				name: 'additionalFields',
 				type: 'collection',
@@ -150,10 +170,26 @@ export class NbEmailVerification implements INodeType {
 						throw new NodeOperationError(this.getNode(), `No email found in field "${emailField}"`, { itemIndex: i });
 					}
 
+					// Validate email format
+					if (!EMAIL_REGEX.test(email)) {
+						throw new NodeOperationError(
+							this.getNode(),
+							`Invalid email format in field "${emailField}": ${email}`,
+							{ itemIndex: i }
+						);
+					}
+
+					// Get API endpoint
+					const apiEndpoint = this.getNodeParameter('apiEndpoint', i) as string;
+
 					// Make API request to NeverBounce
 					const requestOptions: IHttpRequestOptions = {
 						method: 'GET',
-						url: `https://api.neverbounce.com/v4/single/check?key=${credentials.apiKey}&email=${email}`,
+						url: `${apiEndpoint}/v4/single/check`,
+						qs: {
+							key: credentials.apiKey,
+							email,
+						},
 						headers: {
 							'Content-Type': 'application/json',
 							'Authorization': `Bearer ${credentials.apiKey}`,
