@@ -22,7 +22,7 @@
     "url": "https://github.com/neverbounce/nb-email-verification.git"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=20.15"
   },
   "main": "index.js",
   "scripts": {

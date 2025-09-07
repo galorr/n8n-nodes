@@ -7,38 +7,7 @@ import {
 	NodeOperationError,
 	IHttpRequestOptions,
 } from 'n8n-workflow';
-
-/**
- * Email validation regex pattern
- * This is a basic pattern that checks for the standard email format
- */
-const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-export enum VerifyStatusCode {
-	VALID = 0,
-	INVALID = 1,
-	DISPOSABLE = 2,
-	CATCHALL = 3,
-	UNKNOWN = 4,
-}
-
-export enum VerifyStatus {
-	VALID = 'valid',
-	INVALID = 'invalid',
-	DISPOSABLE = 'disposable',
-	CATCHALL = 'catchall',
-	UNKNOWN = 'unknown',
-}
-
-export interface RawVerifiedEmail {
-	status: VerifyStatusCode;
-	result: VerifyStatus;
-	email: string;
-	created_at: string;
-	flags: string[];
-	suggested_correction: string;
-	execution_time: number;
-}
+import { VerifyStatus, RawVerifiedEmail, EMAIL_REGEX } from '../../types';
 
 export class NbEmailVerification implements INodeType {
 	description: INodeTypeDescription = {

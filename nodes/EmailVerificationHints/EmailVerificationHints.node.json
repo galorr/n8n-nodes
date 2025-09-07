@@ -14,8 +14,11 @@
     ]
   },
   "alias": [
-    "Email",
+     "Email",
     "Verification",
+    "NeverBounce",
+    "Validation",
+    "Email Checker",
     "Agent Instructions",
     "AI",
     "LLM",
@@ -26,7 +29,8 @@
       "Email"
     ],
     "Utility": [
-      "Automation Helper"
+      "Automation Helper",
+			"Validation"
     ]
   }
 }

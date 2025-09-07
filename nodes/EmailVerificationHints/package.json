@@ -1,6 +1,6 @@
 {
   "name": "email-verification-hints",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "n8n node to provide email verification hints",
   "keywords": [
     "n8n-community-node-package",
@@ -33,6 +33,9 @@
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
+      "credentials": [
+      "dist/credentials/NeverBounceApi.credentials.js"
+    ],
     "nodes": [
       "dist/nodes/EmailVerificationHints/EmailVerificationHints.node.js"
     ]
