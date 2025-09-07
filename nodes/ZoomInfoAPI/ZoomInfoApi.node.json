@@ -1,0 +1,42 @@
+{
+  "node": "n8n-nodes-base.zoomInfoApi",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Sales",
+    "Communication",
+    "Data & Storage"
+  ],
+  "resources": {
+    "primaryDocumentation": [
+      {
+        "url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.zoominfoapi/"
+      }
+    ],
+    "credentialDocumentation": [
+      {
+        "url": "https://www.zoominfo.com/business/api"
+      }
+    ]
+  },
+  "alias": [
+    "Contact",
+    "Company",
+    "Search",
+    "B2B",
+    "ZoomInfo",
+    "Lead Generation"
+  ],
+  "subcategories": {
+    "Sales": [
+      "Lead Generation",
+      "CRM"
+    ],
+    "Communication": [
+      "Other"
+    ],
+    "Data & Storage": [
+      "Data Enrichment"
+    ]
+  }
+}
