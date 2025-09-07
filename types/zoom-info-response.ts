@@ -41,6 +41,26 @@ export interface ZoomInfoCompanySearchResponse extends ZoomInfoBaseResponse {
 }
 
 /**
+ * Interface for ZoomInfo contact enrich response
+ */
+export interface ZoomInfoContactEnrichResponse extends ZoomInfoBaseResponse {
+  data: {
+    contact: ZoomInfoContact;
+    matchConfidence?: string;
+  };
+}
+
+/**
+ * Interface for ZoomInfo company enrich response
+ */
+export interface ZoomInfoCompanyEnrichResponse extends ZoomInfoBaseResponse {
+  data: {
+    company: ZoomInfoCompany;
+    matchConfidence?: string;
+  };
+}
+
+/**
  * Interface for ZoomInfo error response
  */
 export interface ZoomInfoErrorResponse {
@@ -60,4 +80,6 @@ export interface ZoomInfoErrorResponse {
 export type ZoomInfoResponse =
   | ZoomInfoContactSearchResponse
   | ZoomInfoCompanySearchResponse
+  | ZoomInfoContactEnrichResponse
+  | ZoomInfoCompanyEnrichResponse
   | ZoomInfoErrorResponse;

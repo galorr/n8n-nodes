@@ -8,16 +8,39 @@ export class ZoomInfoApi implements ICredentialType {
 	name = 'zoomInfoApi';
 	displayName = 'ZoomInfo API';
 	documentationUrl = 'https://api.zoominfo.com/docs';
+
 	properties: INodeProperties[] = [
 		{
-			displayName: 'Access Token',
-			name: 'accessToken',
+			displayName: 'User Name',
+			name: 'userName',
+			type: 'string',
+			typeOptions: {
+				editable: true,
+			},
+			default: '',
+			description: 'User name for ZoomInfo API authentication',
+			required: true,
+		},
+		{
+			displayName: 'Client Id',
+			name: 'clientId',
 			type: 'string',
 			typeOptions: {
 				password: true,
 			},
 			default: '',
-			description: 'Access token for ZoomInfo API authentication',
+			description: 'Client Id for ZoomInfo API authentication',
+			required: true,
+		},
+		{
+			displayName: 'Private Key',
+			name: 'privateKey',
+			type: 'string',
+			typeOptions: {
+				password: true,
+			},
+			default: '',
+			description: 'Private Key for ZoomInfo API authentication',
 			required: true,
 		},
 	];
@@ -25,7 +48,7 @@ export class ZoomInfoApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				'Authorization': '=Bearer {{$credentials.accessToken}}'
+				'Authorization': '=Bearer {{$properties.privateKey}}'
 			}
 		},
 	};

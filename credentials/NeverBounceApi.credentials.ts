@@ -25,7 +25,7 @@ export class NeverBounceApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				'Authorization': '={{$credentials.apiKey}}'
+				'Authorization': '={{$properties.apiKey}}'
 			}
 		},
 	};

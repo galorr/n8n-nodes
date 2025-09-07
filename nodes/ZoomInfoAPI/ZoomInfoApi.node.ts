@@ -15,6 +15,7 @@ import {
 	ZoomInfoErrorResponse,
 	ZoomInfoResponse,
 } from '../../types';
+import { createToken } from '../../types/utils';
 
 export class ZoomInfoApi implements INodeType {
 	description: INodeTypeDescription = {
@@ -323,12 +324,16 @@ export class ZoomInfoApi implements INodeType {
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		const items = this.getInputData();
 		const returnData: INodeExecutionData[] = [];
-		const operation = this.getNodeParameter('operation', 0) as string;
+		const operation = this.getNodeParameter('EnrichType', 0) as string;
 
 		// Get credentials
-		const credentials = await this.getCredentials('zoomInfoApi') as {
-			accessToken: string;
-		};
+				const credentials = await this.getCredentials('zoomInfoApi') as {
+					userName: string;
+					clientId: string;
+					privateKey: string;
+				};
+
+				const accessToken = await createToken(credentials.userName, credentials.clientId, credentials.privateKey);
 
 		// Process each item
 		for (let i = 0; i < items.length; i++) {
@@ -365,11 +370,11 @@ export class ZoomInfoApi implements INodeType {
 					// Make API request to ZoomInfo
 					const requestOptions: IHttpRequestOptions = {
 						method: 'POST',
-						url: `${apiEndpoint}/search/contact`,
+						url: `${apiEndpoint}/enrich/contact`,
 						body: searchParams,
 						headers: {
 							'Content-Type': 'application/json',
-							'Authorization': `Bearer ${credentials.accessToken}`,
+							'Authorization': `Bearer ${accessToken}`,
 						},
 						json: true,
 					};
@@ -414,11 +419,11 @@ export class ZoomInfoApi implements INodeType {
 					// Make API request to ZoomInfo
 					const requestOptions: IHttpRequestOptions = {
 						method: 'POST',
-						url: `${apiEndpoint}/search/company`,
+						url: `${apiEndpoint}/enrich/company`,
 						body: searchParams,
 						headers: {
 							'Content-Type': 'application/json',
-							'Authorization': `Bearer ${credentials.accessToken}`,
+							'Authorization': `Bearer ${accessToken}`,
 						},
 						json: true,
 					};

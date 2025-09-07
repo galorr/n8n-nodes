@@ -1,0 +1,27 @@
+{
+  "node": "n8n-nodes-base.zoominfoEnrich",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Data & Storage",
+    "Marketing"
+  ],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://docs.n8n.io/credentials/zoominfo"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.zoominfoEnrich/"
+      }
+    ]
+  },
+  "alias": [
+    "Contact",
+    "Company",
+    "Enrich",
+    "ZoomInfo"
+  ]
+}
